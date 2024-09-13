@@ -10,7 +10,6 @@ conversion = {
 st.title("Number Converter")
 number = st.text_input("Enter a number")
 conversion_start = st.selectbox("Select the base of the input number", list(conversion.keys()))
-number = int(number)
 
 if number:
 	try:

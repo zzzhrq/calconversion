@@ -9,7 +9,7 @@ conversion = {
 
 st.title("Number Converter")
 number = st.text_input("Enter a number")
-consersion_start = st.selectbox("Select conversion type", list(conversion.keys()))
+conversion_start = st.selectbox("Select conversion type", list(conversion.keys()))
 
 num_int = int(number, conversion[conversion_start])
 conversion_type = st.selectbox("Select conversion type", list(conversion.keys()))

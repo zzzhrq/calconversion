@@ -1,16 +1,30 @@
-import streamlit
+import streamlit as st
 
 conversion = {
-    "HEX" : 16,
-    "DEC" : 10,
-    "OCT" : 8,
-    "BIN" : 2
+    "HEX": 16,
+    "DEC": 10,
+    "OCT": 8,
+    "BIN": 2
 }
 
+st.title("Number Converter")
+number = st.text_input("Enter a number")
+consersion_start = st.selectbox("Select conversion type", list(conversion.keys()))
 
-streamlit.title("Number Converter")
-number = streamlit.number_input("Enter a number", value=0, step=1)
-conversion_type = streamlit.selectbox("Select conversion type", list(conversion.keys()))
+num_int = int(number, conversion[conversion_start])
+conversion_type = st.selectbox("Select conversion type", list(conversion.keys()))
 
-streamlit.write(f"Conversion of {number} to {conversion_type} is {int(number):{int(number,conversion[conversion_type])}}")
+converted_number = None
+
+# Convert the number to the selected base
+if conversion_type == "BIN":
+    converted_number = bin(num_int)[2:]  # Remove the '0b' prefix
+elif conversion_type == "HEX":
+    converted_number = hex(num_int)[2:]  # Remove the '0x' prefix
+elif conversion_type == "OCT":
+    converted_number = oct(num_int)[2:]  # Remove the '0o' prefix
+else:
+    converted_number = str(num_int)
+
+st.write(f"Conversion of {number} to {conversion_type} is {converted_number}")
 

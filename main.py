@@ -11,7 +11,7 @@ st.title("Number Converter")
 number = st.text_input("Enter a number")
 conversion_start = st.selectbox("Select the base of the input number", list(conversion.keys()))
 
-if number:
+if int(number):
 	try:
 		# Convert the input number to an integer based on the selected base
 		num_int = int(number, conversion[conversion_start])
